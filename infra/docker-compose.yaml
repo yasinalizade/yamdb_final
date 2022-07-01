@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb/
+    image: yasinalizade/yamdb:latest
     restart: always
     volumes:
       - static_value:/api_yamdb/static/
