@@ -40,7 +40,6 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
-        run: cd api_yamdb
         with:
           push: true
           tags: yasinalizade/yamdb_final:latest
