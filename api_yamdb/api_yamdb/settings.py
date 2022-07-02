@@ -1,11 +1,9 @@
 import os
 from datetime import timedelta
 
-from decouple import config
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = str(os.environ.get('SECRET_KEY', default=123))
 
 DEBUG = False
 
@@ -69,7 +67,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', default=5432)
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
