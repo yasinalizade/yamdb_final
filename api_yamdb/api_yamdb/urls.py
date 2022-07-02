@@ -1,8 +1,7 @@
+from api.urls import urlpatterns
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-
-from api.urls import urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
