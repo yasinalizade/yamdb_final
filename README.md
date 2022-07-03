@@ -1,5 +1,9 @@
 # yamdb_final
 
+1) [http://84.252.141.212/api/v1]
+2) [http://84.252.141.212/admin]
+3) [http://84.252.141.212/redoc]
+
 ## Description
 
 Project YaMDb collect instances (Review) from users about different products (Titles). Products are divided on several categories: «Books», «Films», «Music». The list of instance (Category) can be updated by the admin (e.g. «Fine arts» or «Jewelry»).
