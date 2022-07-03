@@ -46,6 +46,7 @@ jobs:
           push: true
           tags: yasinalizade/yamdb_final:latest
   deploy:
+    if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
@@ -59,6 +60,7 @@ jobs:
           script: |
             sudo docker-compose stop
             sudo docker-compose rm web
+            sudo docker-compose pull yasinalizade/yamdb_final:latest
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
