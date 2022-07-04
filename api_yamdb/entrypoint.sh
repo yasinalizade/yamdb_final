@@ -14,7 +14,7 @@ elif [ $1 = 'pre-run' ]
         python manage.py collectstatic --noinput
 elif [ $1 = 'run' ]
     then
-        exec $(which gunicorn) api_yamdb.wsgi:application --bind=0:8080
+        exec $(which gunicorn) api_yamdb.wsgi:application --bind=0:9010
         exit $?
 else
     echo "Invalid argument"
