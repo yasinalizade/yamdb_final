@@ -10,7 +10,6 @@ COPY ./ /app
 
 RUN chmod +x /app/entrypoint.sh
 
-# CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8080" ] 
 ENTRYPOINT [ "/app/entrypoint.sh" ]
 
 CMD [ "run" ]
