@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    image: ../api_yamdb
+    image: yasinalizade/yamdb_final:latest
     restart: always
     volumes:
       - static_value:/api_yamdb/static/
@@ -17,7 +17,7 @@ services:
     env_file:
       - ./.env
   web-prepare:
-    image: ../api_yamdb
+    image: yasinalizade/yamdb_final:latest
     volumes:
       - static_value:/app/static/
     env_file:
@@ -25,7 +25,7 @@ services:
     command:
      - pre-run
   web-migrate:
-    image: ../api_yamdb
+    image: yasinalizade/yamdb_final:latest
     depends_on:
       - db
     env_file:
