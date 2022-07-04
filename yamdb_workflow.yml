@@ -24,7 +24,6 @@ jobs:
       run: |
         python -m flake8
         pytest
-        cd api_yamdb
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -44,7 +43,7 @@ jobs:
         with:
           context: ./api_yamdb
           push: true
-          tags: yasinalizade/yamdb_final:latest
+          tags: yasinalizade/yamdb:latest
   deploy:
     if: ${{ github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-latest
@@ -58,7 +57,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker-compose pull yasinalizade/yamdb_final:latest
+            sudo docker-compose pull yasinalizade/yamdb:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env

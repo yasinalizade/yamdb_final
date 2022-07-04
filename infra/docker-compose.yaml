@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb
+    image: yasinalizade/yamdb:latest
     restart: always
     volumes:
       - static_value:/api_yamdb/static/
@@ -16,29 +16,30 @@ services:
       - db
     env_file:
       - ./.env
-  # web-prepare:
-  #   image: yasinalizade/yamdb_final:latest
-  #   volumes:
-  #     - static_value:/app/static/
-  #   env_file:
-  #     - ./.env
-  #   command:
-  #    - pre-run
-  # web-migrate:
-  #   image: yasinalizade/yamdb_final:latest
-  #   depends_on:
-  #     - db
-  #   env_file:
-  #     - ./.env
-  #   command:
-  #     - migrate
+      # on server to load data and static
+  web-prepare:
+    build: ../api_yamdb
+    volumes:
+      - static_value:/app/static/
+    env_file:
+      - ./.env
+    command:
+     - pre-run
+  web-migrate:
+    build: ../api_yamdb
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+    command:
+      - migrate
   nginx:
     image: nginx:1.21.3-alpine
     ports:
       - "80:80"
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - static_value:/var/html/static/
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_value:/var/html/static/:ro
     depends_on:
       - web
 
