@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: ../api_yamdb
+    image: ../api_yamdb
     restart: always
     volumes:
       - static_value:/api_yamdb/static/
@@ -17,7 +17,7 @@ services:
     env_file:
       - ./.env
   web-prepare:
-    build: ../api_yamdb
+    image: ../api_yamdb
     volumes:
       - static_value:/app/static/
     env_file:
@@ -25,7 +25,7 @@ services:
     command:
      - pre-run
   web-migrate:
-    build: ../api_yamdb
+    image: ../api_yamdb
     depends_on:
       - db
     env_file:
