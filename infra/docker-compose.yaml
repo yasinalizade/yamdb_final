@@ -17,7 +17,7 @@ services:
     env_file:
       - ./.env
   web-prepare:
-    build: yasinalizade/yamdb_final:latest
+    image: yasinalizade/yamdb_final:latest
     volumes:
       - static_value:/app/static/
     env_file:
@@ -25,7 +25,7 @@ services:
     command:
      - pre-run
   web-migrate:
-    build: yasinalizade/yamdb_final:latest
+    image: yasinalizade/yamdb_final:latest
     depends_on:
       - db
     env_file:
