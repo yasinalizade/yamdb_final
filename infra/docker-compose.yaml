@@ -16,9 +16,8 @@ services:
       - db
     env_file:
       - ./.env
-      # on server to load data and static
   web-prepare:
-    build: ../api_yamdb
+    image: yasinalizade/yamdb:latest
     volumes:
       - static_value:/app/static/
     env_file:
@@ -26,7 +25,7 @@ services:
     command:
      - pre-run
   web-migrate:
-    build: ../api_yamdb
+    image: yasinalizade/yamdb:latest
     depends_on:
       - db
     env_file:
